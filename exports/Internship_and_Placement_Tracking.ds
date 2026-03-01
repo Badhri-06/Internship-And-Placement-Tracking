@@ -1,0 +1,3684 @@
+/*
+ * Author       : badhrinarayanan2410467_ss
+ * Generated on : 01-Mar-2026 13:57:42
+ * Version      : 1.0
+ */
+ application "Internship and Placement Tracking"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form companies
+		{
+			displayname = "Companies"
+			success message = "Company Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			company_id
+			(
+    			type = autonumber
+				displayname = "Company ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			company_name
+			(
+    			type = text
+				displayname = "Company Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			industry
+			(
+    			type = text
+				displayname = "Industry"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			website
+			(
+    			type = url
+				displayname = "Website"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_person
+			(
+    			type = text
+				displayname = "Contact Person"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_email
+			(
+    			type = email
+				displayname = "Contact Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_phone
+			(
+    			type = phonenumber
+				displayname = "Contact Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			address
+			(
+    			type = address
+				displayname = "Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+	     			 visibility = false
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+	     			 visibility = false
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "Latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "Longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_at
+			(
+    			type = datetime
+				displayname = "Updated At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form deadlines
+		{
+			displayname = "Deadlines"
+			success message = "Deadline Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			deadline_id
+			(
+    			type = autonumber
+				displayname = "Deadline ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			application
+			(
+				type = list	
+				displayname = "Application"
+				values  = internship_applications.ID
+    			displayformat = [application_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			deadline_date
+			(
+    			type = date
+				displayname = "Deadline Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reminder_sent
+			(
+    			type = checkbox
+				displayname = "Reminder Sent"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reminder_sent_at
+			(
+    			type = datetime
+				displayname = "Reminder Sent At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = text
+				displayname = "Description"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_at
+			(
+    			type = datetime
+				displayname = "Updated At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form email_reminders
+		{
+			displayname = "Email Reminders"
+			success message = "Email Reminder Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			deadline
+			(
+				type = list	
+				displayname = "Deadline"
+				values  = deadlines.ID
+    			displayformat = [deadline_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			sent_to
+			(
+    			type = email
+				displayname = "Sent To"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			sent_at
+			(
+    			type = datetime
+				displayname = "Sent At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			subject_1
+			(
+    			type = text
+				displayname = "Subject"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			body
+			(
+    			type = textarea
+				displayname = "Body"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Failed","Queued","Sent"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Reminder Created","Reminder Sent","Reminder Pending Review","Reminder Cancelled","Reminder Edited","Reminder Delivered","Reminder Failed","Reminder Resent","Reminder Opened","Reminder Ignored","Reminder Action Taken","Reminder Closed"}
+			}
+		}
+		form internship_applications
+		{
+			displayname = "Internship Applications"
+			success message = "Internship Application Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			application_id
+			(
+    			type = autonumber
+				displayname = "Application ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = students.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			company
+			(
+				type = list	
+				displayname = "Company"
+				values  = companies.ID
+    			displayformat = [company_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			job_title
+			(
+    			type = text
+				displayname = "Job Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			application_date
+			(
+    			type = date
+				displayname = "Application Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Screening","Offer","Rejected","Applied","Accepted","Interview"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			offer_letter
+			(
+    			type = url
+				displayname = "Offer Letter"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			interview_date
+			(
+    			type = date
+				displayname = "Interview Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_at
+			(
+    			type = datetime
+				displayname = "Updated At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Application Submitted","Application Reviewed","Application Rejected","Interview Scheduled","Application On Hold","Interview Completed","Interview Rescheduled","Offer Extended","Offer Accepted","Offer Declined","Offer Withdrawn","Internship Started","Internship Completed","Internship Terminated","Internship Closed","Draft","Applied","Offer Released"}
+			}
+		}
+		form placement_reports
+		{
+			displayname = "Placement Reports"
+			success message = "Placement Report Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			program
+			(
+    			type = text
+				displayname = "Program"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_applicants
+			(
+				type = number
+				displayname = "Total Applicants"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			interviews_held
+			(
+				type = number
+				displayname = "Interviews Held"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			offers_made
+			(
+				type = number
+				displayname = "Offers Made"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			placement_rate
+			(
+    			type = percentage
+				displayname = "Placement Rate"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			year_1
+			(
+				type = number
+				displayname = "Year"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_at
+			(
+    			type = datetime
+				displayname = "Updated At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form placement_visits
+		{
+			displayname = "Placement Visits"
+			success message = "Placement Visit Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			company
+			(
+				type = list	
+				displayname = "Company"
+				values  = companies.ID
+    			displayformat = [company_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			visit_date
+			(
+    			type = date
+				displayname = "Visit Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			visit_type
+			(
+				type = picklist
+				displayname = "Visit Type"
+				values = {"On-Campus Interview","Virtual Meet","Campus Drive","Workshop"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_person
+			(
+    			type = text
+				displayname = "Contact Person"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_email
+			(
+    			type = email
+				displayname = "Contact Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_phone
+			(
+    			type = phonenumber
+				displayname = "Contact Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			schedule_notes
+			(
+    			type = textarea
+				displayname = "Schedule Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Scheduled","Completed","Cancelled"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_at
+			(
+    			type = datetime
+				displayname = "Updated At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form resume_search
+		{
+			displayname = "Resume Search"
+			success message = "Search Resumed Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = students.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			skills
+			(
+				type = list	
+				displayname = "Skills"
+				values = {"Java","Leadership","Project Management","JavaScript","Data Analysis","Machine Learning","Python","SQL","Communication"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			experience_years
+			(
+				type = number
+				displayname = "Experience Years"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			highest_qualification
+			(
+    			type = text
+				displayname = "Highest Qualification"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			graduation_year
+			(
+				type = number
+				displayname = "Graduation Year"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_at
+			(
+    			type = datetime
+				displayname = "Updated At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form students
+		{
+			displayname = "Students"
+			success message = "Student Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student_id
+			(
+    			type = autonumber
+				displayname = "Student ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			first_name1
+			(
+    			type = text
+				displayname = "First Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			last_name1
+			(
+    			type = text
+				displayname = "Last Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			phone
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			major
+			(
+    			type = text
+				displayname = "Major"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			graduation_year
+			(
+				type = number
+				displayname = "Graduation Year"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			resume_link
+			(
+    			type = url
+				displayname = "Resume Link"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_at
+			(
+    			type = datetime
+				displayname = "Created At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_at
+			(
+    			type = datetime
+				displayname = "Updated At"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Placement_Status
+			(
+				type = picklist
+				displayname = "Placement Status"
+				maxchar = 100
+				values = {"Not Placed","placed"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list internship_applications_Report
+		{
+			displayName = "All Internship Applications"
+			show all rows from internship_applications    
+			(
+				application_id as "Application ID"
+				student as "Student"
+				company as "Company"
+				job_title as "Job Title"
+				application_date as "Application Date"
+				status as "Status"
+				offer_letter as "Offer Letter"
+				interview_date as "Interview Date"
+				notes as "Notes"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+		}
+		kanban internship_applications_by_status
+		{
+			displayName = "Statuses"
+			show all rows from internship_applications    
+			(
+				application_id as "Application ID"
+				student as "Student"
+				company as "Company"
+				job_title as "Job Title"
+				application_date as "Application Date"
+				status as "Status"
+				offer_letter as "Offer Letter"
+				interview_date as "Interview Date"
+				notes as "Notes"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+			options
+			(
+	 			display field = status
+	 		)
+		}
+		list placement_visits_Report
+		{
+			displayName = "All Placement Visits"
+			show all rows from placement_visits    
+			(
+				company as "Company"
+				visit_date as "Visit Date"
+				visit_type as "Visit Type"
+				contact_person as "Contact Person"
+				contact_email as "Contact Email"
+				contact_phone as "Contact Phone"
+				schedule_notes as "Schedule Notes"
+				status as "Status"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (visit_type == "Campus Drive")
+				fields = [visit_type]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (visit_type == "On-Campus Interview")
+				fields = [visit_type]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (visit_type == "Virtual Meet")
+				fields = [visit_type]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+				"New Formatting4"
+				{
+				condition = (visit_type == "Workshop")
+				fields = [visit_type]
+				format = "color:#ffffff;background-color:#3598db;"
+				}
+			)
+		}
+		kanban placement_visits_by_visit_type
+		{
+			displayName = "Visit Types"
+			show all rows from placement_visits    
+			(
+				company as "Company"
+				visit_date as "Visit Date"
+				visit_type as "Visit Type"
+				contact_person as "Contact Person"
+				contact_email as "Contact Email"
+				contact_phone as "Contact Phone"
+				schedule_notes as "Schedule Notes"
+				status as "Status"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+			options
+			(
+	 			display field = visit_type
+	 		)
+		}
+		list deadlines_Report
+		{
+			displayName = "All Deadlines"
+			show all rows from deadlines    
+			(
+				deadline_id as "Deadline ID"
+				application as "Application"
+				deadline_date as "Deadline Date"
+				reminder_sent as "Reminder Sent"
+				reminder_sent_at as "Reminder Sent At"
+				description as "Description"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+		}
+		list email_reminders_Report
+		{
+			displayName = "All Email Reminders"
+			show all rows from email_reminders    
+			(
+				deadline as "Deadline"
+				sent_to as "Sent To"
+				sent_at as "Sent At"
+				subject_1 as "Subject"
+				body as "Body"
+				status as "Status"
+				created_at as "Created At"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (status == "Queued")
+				fields = [status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (status == "Sent")
+				fields = [status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban email_reminders_by_status
+		{
+			displayName = "Statuses"
+			show all rows from email_reminders    
+			(
+				deadline as "Deadline"
+				sent_to as "Sent To"
+				sent_at as "Sent At"
+				subject_1 as "Subject"
+				body as "Body"
+				status as "Status"
+				created_at as "Created At"
+			)
+			options
+			(
+	 			display field = status
+	 		)
+		}
+		list resume_search_Report
+		{
+			displayName = "All Searches"
+			show all rows from resume_search    
+			(
+				student as "Student"
+				skills as "Skills"
+				experience_years as "Experience Years"
+				highest_qualification as "Highest Qualification"
+				graduation_year as "Graduation Year"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+		}
+		list students_Report
+		{
+			displayName = "All Students"
+			show all rows from students    
+			(
+				student_id as "Student ID"
+				first_name1 as "First Name"
+				last_name1 as "Last Name"
+				email as "Email"
+				phone as "Phone"
+				major as "Major"
+				graduation_year as "Graduation Year"
+				resume_link as "Resume Link"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+		}
+		list placement_reports_Report
+		{
+			displayName = "All Placement Reports"
+			show all rows from placement_reports    
+			(
+				program as "Program"
+				total_applicants as "Total Applicants"
+				interviews_held as "Interviews Held"
+				offers_made as "Offers Made"
+				placement_rate as "Placement Rate"
+				(
+					display = total,average,min,max	
+				)
+				year_1 as "Year"
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+		}
+		list companies_Report
+		{
+			displayName = "All Companies"
+			show all rows from companies    
+			(
+				company_id as "Company ID"
+				company_name as "Company Name"
+				industry as "Industry"
+				website as "Website"
+				contact_person as "Contact Person"
+				contact_email as "Contact Email"
+				contact_phone as "Contact Phone"
+				address  as "Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				created_at as "Created At"
+				updated_at as "Updated At"
+			)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F97164'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '64%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '8px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.placement_reports.total_applicants.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '8px' \n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Total Applicants'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '36%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#C75A50'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-39'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EEA131'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.placement_reports.placement_rate.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Average Placement Rates'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#BE8127'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-39'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#00CFA9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.internship_applications.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Internship Applications'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0BA385'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'sport-cardio'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3E99DE'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.placement_visits.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Placement Visits'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0E78C9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Statuses'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F97164'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'media-1-button-next'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tcolor = '#C75A50'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Scheduled&quot;'\n\t  value = 'thisapp.placement_visits.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Scheduled'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#EEA131'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-todo'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#BE8127'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Completed&quot;'\n\t  value = 'thisapp.placement_visits.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Completed'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00CFA9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-axe'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0BA385'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Cancelled&quot;'\n\t  value = 'thisapp.placement_visits.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Cancelled'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#3E99DE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0E78C9'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.placement_visits.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 1'\n \n\t\n\ttitle = 'Quick Links'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'internship_applications'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Internship Applications'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel_Button 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'placement_visits'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Placement Visits'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel_Button 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'deadlines'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Deadlines'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'email_reminders'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Email Reminders'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Distribution by Visit Type'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Pie'\n\txtitle = 'Visit Type'\n\tytitle = 'Visit Type'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = '#f37d16'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'placement_visits'\n\txfield = 'visit_type'\n\tyfields = 'count:visit_type'\n\t\tDelugeCriteria = 'visit_type is not null &amp;&amp; visit_type != &quot;&quot;'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Distribution by Status'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Status'\n\tytitle = 'Count of Status'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = 'theme1'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'internship_applications'\n\txfield = 'status'\n\tyfields = 'count:status'\n\t\tDelugeCriteria = 'status is not null &amp;&amp; status != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'internship_applications_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			Auto_Update_Placement_Sta as "Auto Update Placement Status"
+			{
+				type =  form
+				form = internship_applications
+
+				record event = on edit
+
+				on success
+				{
+					actions  (status == "Accepted")
+					{
+					update students[Placement_Status == "placed"]
+					[
+						Placement_Status = "placed"
+					]
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Interview_Reminder_Email as "Interview Reminder Email"
+			{
+				type =  schedule
+				form = internship_applications[status == "Interview"]
+				start = before 1 days from interview_date at "15:00:00"
+				time zone = "America/Los_Angeles"
+				on start
+				{
+				}
+			}
+		}
+
+
+		blueprint
+		{
+    			deadline_reminder_system as "Deadline Reminder System"
+    			{
+        			type = Blueprint
+        			form = email_reminders
+        			start
+        			{
+            			start stage = "Reminder Created"
+        			}
+        			stages
+        			{
+           			"Reminder Created"
+           			{
+           			}
+           			"Reminder Sent"
+           			{
+           			}
+           			"Reminder Pending Review"
+           			{
+           			}
+           			"Reminder Cancelled"
+           			{
+           			}
+           			"Reminder Edited"
+           			{
+           			}
+           			"Reminder Delivered"
+           			{
+           			}
+           			"Reminder Failed"
+           			{
+           			}
+           			"Reminder Resent"
+           			{
+           			}
+           			"Reminder Opened"
+           			{
+           			}
+           			"Reminder Ignored"
+           			{
+           			}
+           			"Reminder Action Taken"
+           			{
+           			}
+           			"Reminder Closed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				approve_and_send as "Approve and Send Reminder"
+    				{
+         				type = normal
+         				from stage = "Reminder Pending Review"
+         				to stage = "Reminder Sent"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_reminder as "Cancel Reminder"
+    				{
+         				type = normal
+         				from stage = "Reminder Created"
+         				to stage = "Reminder Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_reminder as "Close Reminder Due to Inactivity"
+    				{
+         				type = normal
+         				from stage = "Reminder Ignored"
+         				to stage = "Reminder Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				confirm_delivery as "Confirm Delivery"
+    				{
+         				type = normal
+         				from stage = "Reminder Sent"
+         				to stage = "Reminder Delivered"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				edit_reminder as "Edit Reminder Content"
+    				{
+         				type = normal
+         				from stage = "Reminder Pending Review"
+         				to stage = "Reminder Edited"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				handle_failure as "Handle Delivery Failure"
+    				{
+         				type = normal
+         				from stage = "Reminder Sent"
+         				to stage = "Reminder Failed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				mark_ignored as "Mark as Ignored After Delay"
+    				{
+         				type = normal
+         				from stage = "Reminder Delivered"
+         				to stage = "Reminder Ignored"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				record_action as "Record User Action"
+    				{
+         				type = normal
+         				from stage = "Reminder Opened"
+         				to stage = "Reminder Action Taken"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resend_reminder as "Resend Reminder"
+    				{
+         				type = normal
+         				from stage = "Reminder Sent"
+         				to stage = "Reminder Resent"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				review_reminder as "Review Reminder Content"
+    				{
+         				type = normal
+         				from stage = "Reminder Created"
+         				to stage = "Reminder Pending Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				send_reminder as "Send Reminder Email"
+    				{
+         				type = normal
+         				from stage = "Reminder Created"
+         				to stage = "Reminder Sent"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				track_open as "Track Email Open"
+    				{
+         				type = normal
+         				from stage = "Reminder Delivered"
+         				to stage = "Reminder Opened"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+    			internship_application_workflow as "Internship Application Workflow"
+    			{
+        			type = Blueprint
+        			form = internship_applications
+        			start
+        			{
+            			start stage = "Application Submitted"
+        			}
+        			stages
+        			{
+           			"Application Submitted"
+           			{
+           			}
+           			"Application Reviewed"
+           			{
+           			}
+           			"Application Rejected"
+           			{
+           			}
+           			"Interview Scheduled"
+           			{
+           			}
+           			"Application On Hold"
+           			{
+           			}
+           			"Interview Completed"
+           			{
+           			}
+           			"Interview Rescheduled"
+           			{
+           			}
+           			"Offer Extended"
+           			{
+           			}
+           			"Offer Accepted"
+           			{
+           			}
+           			"Offer Declined"
+           			{
+           			}
+           			"Offer Withdrawn"
+           			{
+           			}
+           			"Internship Started"
+           			{
+           			}
+           			"Internship Completed"
+           			{
+           			}
+           			"Internship Terminated"
+           			{
+           			}
+           			"Internship Closed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				accept_offer as "Accept Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Accepted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_internship as "Close Internship"
+    				{
+         				type = normal
+         				from stage = "Internship Completed"
+         				to stage = "Internship Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_internship as "Complete Internship"
+    				{
+         				type = normal
+         				from stage = "Internship Started"
+         				to stage = "Internship Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_interview as "Complete Interview"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Interview Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				decline_offer as "Decline Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Declined"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				extend_offer as "Extend Offer"
+    				{
+         				type = normal
+         				from stage = "Interview Completed"
+         				to stage = "Offer Extended"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				hold_application as "Put Application On Hold"
+    				{
+         				type = normal
+         				from stage = "Application Reviewed"
+         				to stage = "Application On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_application as "Reject Application"
+    				{
+         				type = normal
+         				from stage = "Application Submitted"
+         				to stage = "Application Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reschedule_interview as "Reschedule Interview"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Interview Rescheduled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_review as "Resume Review"
+    				{
+         				type = normal
+         				from stage = "Application On Hold"
+         				to stage = "Application Reviewed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				review_application as "Review Application"
+    				{
+         				type = normal
+         				from stage = "Application Submitted"
+         				to stage = "Application Reviewed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				schedule_interview as "Schedule Interview"
+    				{
+         				type = normal
+         				from stage = "Application Reviewed"
+         				to stage = "Interview Scheduled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_internship as "Start Internship"
+    				{
+         				type = normal
+         				from stage = "Offer Accepted"
+         				to stage = "Internship Started"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				terminate_internship as "Terminate Internship"
+    				{
+         				type = normal
+         				from stage = "Internship Started"
+         				to stage = "Internship Terminated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				withdraw_offer as "Withdraw Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Withdrawn"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Student Success Advisor"
+			{
+				name = "Student Success Advisor"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review student resumes and provide feedback \n"
+				ModulePermissions
+				{
+					students
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							students_Report={"View","Edit"}
+						}
+					}
+					resume_search
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_search_Report={"View"}
+						}
+					}
+					placement_reports
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_reports_Report={"View"}
+						}
+					}
+					internship_applications
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							internship_applications_by_status={"View","Edit"}
+							internship_applications_Report={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Placement Data Analyst"
+			{
+				name = "Placement Data Analyst"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Analyze internship and placement data to generate insights \n"
+				ModulePermissions
+				{
+					placement_visits
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_visits_by_visit_type={"View"}
+							placement_visits_Report={"View"}
+						}
+					}
+					placement_reports
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_reports_Report={"View","Edit","Delete"}
+						}
+					}
+					deadlines
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							deadlines_Report={"View"}
+						}
+					}
+					internship_applications
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							internship_applications_by_status={"View"}
+							internship_applications_Report={"View"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Career Services Coordinator"
+			{
+				name = "Career Services Coordinator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Manage and schedule placement visits with companies \n"
+				ModulePermissions
+				{
+					students
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							students_Report={"View"}
+						}
+					}
+					placement_visits
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_visits_by_visit_type={"View","Edit","Delete"}
+							placement_visits_Report={"View","Edit","Delete"}
+						}
+					}
+					placement_reports
+					{
+						enabled= Create,Viewall,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_reports_Report={"View"}
+						}
+					}
+					internship_applications
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							internship_applications_by_status={"View"}
+							internship_applications_Report={"View"}
+						}
+					}
+				}
+			}
+			"System Administrator"
+			{
+				name = "System Administrator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Oversee user access and permissions across the platform \n"
+				ModulePermissions
+				{
+					email_reminders
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							email_reminders_Report={"View","Edit","Delete"}
+							email_reminders_by_status={"View","Edit","Delete"}
+						}
+					}
+					companies
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							companies_Report={"View","Edit","Delete"}
+						}
+					}
+					placement_visits
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_visits_by_visit_type={"View","Edit","Delete"}
+							placement_visits_Report={"View","Edit","Delete"}
+						}
+					}
+					placement_reports
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_reports_Report={"View","Edit","Delete"}
+						}
+					}
+					students
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							students_Report={"View","Edit","Delete"}
+						}
+					}
+					resume_search
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_search_Report={"View","Edit","Delete"}
+						}
+					}
+					deadlines
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							deadlines_Report={"View","Edit","Delete"}
+						}
+					}
+					internship_applications
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							internship_applications_by_status={"View","Edit","Delete"}
+							internship_applications_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Student"
+			{
+				name = "Student"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Upload and maintain personal resume with relevant skills and experience \n"
+				ModulePermissions
+				{
+					email_reminders
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							email_reminders_Report={"View"}
+							email_reminders_by_status={"View"}
+						}
+					}
+					resume_search
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_search_Report={"View","Edit"}
+						}
+					}
+					deadlines
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							deadlines_Report={"View"}
+						}
+					}
+					internship_applications
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							internship_applications_by_status={"View","Edit"}
+							internship_applications_Report={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			"Company Recruiter"
+			{
+				name = "Company Recruiter"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "List company details and hiring opportunities for internships \n"
+				ModulePermissions
+				{
+					email_reminders
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							email_reminders_Report={"View"}
+							email_reminders_by_status={"View"}
+						}
+					}
+					companies
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							companies_Report={"View","Edit","Delete"}
+						}
+					}
+					placement_visits
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							placement_visits_by_visit_type={"View"}
+							placement_visits_Report={"View"}
+						}
+					}
+					internship_applications
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							internship_applications_by_status={"View","Edit","Delete"}
+							internship_applications_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form companies
+			{
+				label placement = left
+			}
+			form deadlines
+			{
+				label placement = left
+			}
+			form email_reminders
+			{
+				label placement = left
+			}
+			form internship_applications
+			{
+				label placement = left
+			}
+			form placement_reports
+			{
+				label placement = left
+			}
+			form placement_visits
+			{
+				label placement = left
+			}
+			form resume_search
+			{
+				label placement = left
+			}
+			form students
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report internship_applications_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								application_id as "Application ID"
+								student as "Student"
+								company as "Company"
+								job_title as "Job Title"
+								application_date as "Application Date"
+								status as "Status"
+								offer_letter as "Offer Letter"
+								interview_date as "Interview Date"
+								notes as "Notes"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								application_id as "Application ID"
+								student as "Student"
+								company as "Company"
+								job_title as "Job Title"
+								application_date as "Application Date"
+								status as "Status"
+								offer_letter as "Offer Letter"
+								interview_date as "Interview Date"
+								notes as "Notes"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student ID"
+								first_name1 as "First Name"
+								last_name1 as "Last Name"
+								email as "Email"
+								phone as "Phone"
+								major as "Major"
+								graduation_year as "Graduation Year"
+								resume_link as "Resume Link"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+						datablock3
+						(
+							layout type = -2
+		     				title = "Company"
+		     				related field = company
+							fields
+							(
+								company_id as "Company ID"
+								company_name as "Company Name"
+								industry as "Industry"
+								website as "Website"
+								contact_person as "Contact Person"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								address as "Address"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report internship_applications_by_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								job_title as "Job Title"
+								application_id as "Application ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								application_id as "Application ID"
+								student as "Student"
+								company as "Company"
+								job_title as "Job Title"
+								application_date as "Application Date"
+								status as "Status"
+								offer_letter as "Offer Letter"
+								interview_date as "Interview Date"
+								notes as "Notes"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report placement_visits_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								company as "Company"
+								visit_date as "Visit Date"
+								visit_type as "Visit Type"
+								contact_person as "Contact Person"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								schedule_notes as "Schedule Notes"
+								status as "Status"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								company as "Company"
+								visit_date as "Visit Date"
+								visit_type as "Visit Type"
+								contact_person as "Contact Person"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								schedule_notes as "Schedule Notes"
+								status as "Status"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Company"
+		     				related field = company
+							fields
+							(
+								company_id as "Company ID"
+								company_name as "Company Name"
+								industry as "Industry"
+								website as "Website"
+								contact_person as "Contact Person"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								address as "Address"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report placement_visits_by_visit_type
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								contact_person as "Contact Person"
+								company as "Company"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								company as "Company"
+								visit_date as "Visit Date"
+								visit_type as "Visit Type"
+								contact_person as "Contact Person"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								schedule_notes as "Schedule Notes"
+								status as "Status"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report deadlines_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								deadline_id as "Deadline ID"
+								application as "Application"
+								deadline_date as "Deadline Date"
+								reminder_sent as "Reminder Sent"
+								reminder_sent_at as "Reminder Sent At"
+								description as "Description"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								deadline_id as "Deadline ID"
+								application as "Application"
+								deadline_date as "Deadline Date"
+								reminder_sent as "Reminder Sent"
+								reminder_sent_at as "Reminder Sent At"
+								description as "Description"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Application"
+		     				related field = application
+							fields
+							(
+								application_id as "Application ID"
+								student as "Student"
+								company as "Company"
+								job_title as "Job Title"
+								application_date as "Application Date"
+								status as "Status"
+								offer_letter as "Offer Letter"
+								interview_date as "Interview Date"
+								notes as "Notes"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report email_reminders_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								deadline as "Deadline"
+								sent_to as "Sent To"
+								sent_at as "Sent At"
+								subject_1 as "Subject"
+								body as "Body"
+								status as "Status"
+								created_at as "Created At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								deadline as "Deadline"
+								sent_to as "Sent To"
+								sent_at as "Sent At"
+								subject_1 as "Subject"
+								body as "Body"
+								status as "Status"
+								created_at as "Created At"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Deadline"
+		     				related field = deadline
+							fields
+							(
+								deadline_id as "Deadline ID"
+								application as "Application"
+								deadline_date as "Deadline Date"
+								reminder_sent as "Reminder Sent"
+								reminder_sent_at as "Reminder Sent At"
+								description as "Description"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report email_reminders_by_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								subject_1 as "Subject"
+								deadline as "Deadline"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								deadline as "Deadline"
+								sent_to as "Sent To"
+								sent_at as "Sent At"
+								subject_1 as "Subject"
+								body as "Body"
+								status as "Status"
+								created_at as "Created At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report resume_search_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								student as "Student"
+								skills as "Skills"
+								experience_years as "Experience Years"
+								highest_qualification as "Highest Qualification"
+								graduation_year as "Graduation Year"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								skills as "Skills"
+								experience_years as "Experience Years"
+								highest_qualification as "Highest Qualification"
+								graduation_year as "Graduation Year"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student ID"
+								first_name1 as "First Name"
+								last_name1 as "Last Name"
+								email as "Email"
+								phone as "Phone"
+								major as "Major"
+								graduation_year as "Graduation Year"
+								resume_link as "Resume Link"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report students_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								student_id as "Student ID"
+								first_name1 as "First Name"
+								last_name1 as "Last Name"
+								email as "Email"
+								phone as "Phone"
+								major as "Major"
+								graduation_year as "Graduation Year"
+								resume_link as "Resume Link"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								student_id as "Student ID"
+								first_name1 as "First Name"
+								last_name1 as "Last Name"
+								email as "Email"
+								phone as "Phone"
+								major as "Major"
+								graduation_year as "Graduation Year"
+								resume_link as "Resume Link"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report placement_reports_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								program as "Program"
+								total_applicants as "Total Applicants"
+								interviews_held as "Interviews Held"
+								offers_made as "Offers Made"
+								placement_rate as "Placement Rate"
+								year_1 as "Year"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								program as "Program"
+								total_applicants as "Total Applicants"
+								interviews_held as "Interviews Held"
+								offers_made as "Offers Made"
+								placement_rate as "Placement Rate"
+								year_1 as "Year"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report companies_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								company_id as "Company ID"
+								company_name as "Company Name"
+								industry as "Industry"
+								website as "Website"
+								contact_person as "Contact Person"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								address as "Address"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								company_id as "Company ID"
+								company_name as "Company Name"
+								industry as "Industry"
+								website as "Website"
+								contact_person as "Contact Person"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								address as "Address"
+								created_at as "Created At"
+								updated_at as "Updated At"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Internship Applications"
+					icon = "education-hat"
+					form  internship_applications
+					{
+						icon = "ui-1-bold-add"
+					}
+					report internship_applications_Report
+					{
+						icon = "sport-cardio"
+					}
+					report internship_applications_by_status
+					{
+						icon = "design-2-selection"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Placement Visits"
+					icon = "media-1-camera-compact"
+					form  placement_visits
+					{
+						icon = "ui-1-bold-add"
+					}
+					report placement_visits_Report
+					{
+						icon = "travel-world"
+					}
+					report placement_visits_by_visit_type
+					{
+						icon = "users-2-b-check"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Deadlines"
+					icon = "ui-1-calendar-grid-61"
+					form  deadlines
+					{
+						icon = "ui-1-bold-add"
+					}
+					report deadlines_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Email Reminders"
+					icon = "ui-1-email-84"
+					form  email_reminders
+					{
+						icon = "ui-1-bold-add"
+					}
+					report email_reminders_Report
+					{
+						icon = "travel-world"
+					}
+					report email_reminders_by_status
+					{
+						icon = "design-2-selection"
+					}
+				}
+				section Section_6
+				{
+					displayname = "Searches"
+					icon = "users-2-search"
+					form  resume_search
+					{
+						icon = "ui-1-bold-add"
+					}
+					report resume_search_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_7
+				{
+					displayname = "Students"
+					icon = "education-pencil-47"
+					form  students
+					{
+						icon = "ui-1-bold-add"
+					}
+					report students_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_8
+				{
+					displayname = "Placement Reports"
+					icon = "business-laptop-71"
+					form  placement_reports
+					{
+						icon = "ui-1-bold-add"
+					}
+					report placement_reports_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_9
+				{
+					displayname = "Companies"
+					icon = "business-factory"
+					form  companies
+					{
+						icon = "ui-1-bold-add"
+					}
+					report companies_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "6"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form companies
+			{
+				label placement = auto
+			}
+			form deadlines
+			{
+				label placement = auto
+			}
+			form email_reminders
+			{
+				label placement = auto
+			}
+			form internship_applications
+			{
+				label placement = auto
+			}
+			form placement_reports
+			{
+				label placement = auto
+			}
+			form placement_visits
+			{
+				label placement = auto
+			}
+			form resume_search
+			{
+				label placement = auto
+			}
+			form students
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = red
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form companies
+			{
+				label placement = auto
+			}
+			form deadlines
+			{
+				label placement = auto
+			}
+			form email_reminders
+			{
+				label placement = auto
+			}
+			form internship_applications
+			{
+				label placement = auto
+			}
+			form placement_reports
+			{
+				label placement = auto
+			}
+			form placement_visits
+			{
+				label placement = auto
+			}
+			form resume_search
+			{
+				label placement = auto
+			}
+			form students
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = red
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
